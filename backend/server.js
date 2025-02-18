@@ -11,6 +11,10 @@ const PORT = 5001;
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "API is running!" });
+});
+
 app.use("/api", queueRoutes);
 
 // Webhook for Twilio (Ensure it works!)
@@ -20,9 +24,6 @@ app.post("/api/queue/sms", (req, res) => {
 });
 
 
-app.get("/api/health", (req, res) => {
-  res.status(200).json({ status: "API is running!" });
-});
 
 
 // 测试根路径
