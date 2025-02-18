@@ -23,7 +23,7 @@ const getDatabaseConnection = (restaurantId) => {
     return dbConnections[dbName];
   }
 
-  const uri = `mongodb://127.0.0.1:27017/${dbName}`;
+  const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${dbName}?retryWrites=true&w=majority`;
   const connection = mongoose.createConnection(uri, {
    // useNewUrlParser: true,
     //useUnifiedTopology: true,
